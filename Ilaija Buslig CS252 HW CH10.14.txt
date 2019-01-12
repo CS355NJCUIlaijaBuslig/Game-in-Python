@@ -1,0 +1,156 @@
+def playGame():
+  location = "Drawbridge"
+  showIntroduction()
+  while not (location == "Exit") :
+    showRoom(location)
+    direction = requestString("Which direction?")
+    location = pickRoom(direction, location)
+    print ("location is = ",location)
+
+def showIntroduction():
+  printNow("Welcome to the Castle in the woods!")
+  printNow("You are a guard on watchtower duty near the drawbridge.")
+  printNow("At the watchtower, you see marauders coming")
+  printNow("to attack the castle.")
+  printNow("Your job is to inform everybody in the castle")
+  printNow("and tell them to either hide or")
+  printNow("gather an army to attack the marauders.")
+  printNow("In each room, you will be told")
+  printNow(" which directions you can go.")
+  printNow("You can move north, south, east, or west")
+  printNow(" by typing that direction.")
+  printNow("Type help to replay this introduction.")
+  printNow("Type quit or exit to end the program.")
+
+def showDrawBridge():
+  printNow("You are on the watchtower near the drawbridge.")
+  printNow("You see marauders coming to attack the castle.")
+  printNow("You can go north into the Gate to inform the everyone in the castle.")
+
+def showGate():
+  printNow("You are in the gate of the Castle.")
+  printNow("There is a passageway to the north and another to the east.") 
+  printNow("The Drawbridge is behind you to the south.")
+
+def showCourtyard():
+  printNow("You are in the Courtyard. You see a group of knights training.")
+  printNow("You tell them about the marauders. They begin to prepare for battle.")
+  printNow("You can go to the north, south, east, or west")
+
+def showKitchens():
+  printNow("You are in the kitchen. There are maids and butlers")
+  printNow("cooking food. You tell them about the marauders.")
+  printNow("They inform the others in the castle and went to hiding.")
+  printNow("You can go east")
+
+def showStables():
+  printNow("You are in the stables.")
+  printNow("You get your horses ready for battle")
+  printNow("You can go west")
+
+def showHallway():
+  printNow("You are in the hallway.")
+  printNow("Any direction will do.")
+  printNow("You can go north, south, east, or west")
+
+def showPrincessRoom():
+  printNow("You tell the Princess about the marauders.")
+  printNow("She begins to get worried and goes into hiding.")
+  printNow("You can go south")
+
+def showSirKnightsRoom():
+  printNow("You are in the Sir Knights Room.")
+  printNow("You tell the Sir Knight about the marauders.")
+  printNow("The Sir Knight prepares himself for battle.")
+  printNow("You can go west")
+
+def showKingsRoom():
+  printNow("You are in the Kings Room.")
+  printNow("You tell the King about his maruaders.")
+  printNow("The King and his special forces prepare for battle.")
+  printNow("You can go south or east")
+
+def showWizardsRoom(): 
+  printNow("You are in the Wizards Room.")
+  printNow("You tell the Wizard about the Maruaders.")
+  printNow("The Wizard gathered his powers and prepare for battle.")
+  printNow("You can go north")
+
+def showRoom(room):
+  if room == "Drawbridge":
+    showDrawBridge()
+  if room == "Gate":
+    showGate()
+  if room == "Courtyard":
+    showCourtyard()
+  if room == "Kitchens":
+    showKitchens()
+  if room == "Stables":
+    showStables()
+  if room == "Hallway":
+    showHallway()
+  if room == "PrincessRoom":
+    showPrincessRoom()
+  if room == "SirKnightsRoom":
+    showSirKnightsRoom()
+  if room == "KingsRoom":
+    showKingsRoom()
+  if room == "WizardsRoom":
+    showWizardsRoom()
+
+
+def pickRoom(direction, room):
+  if (direction == "quit") or (direction == "exit"):
+    printNow("Congraduations you have informed everyone in the castle and gathered an army to beat the marauders")
+    return "Exit"
+  if direction == "help":
+    showIntroduction()
+    return room
+  if room == "Drawbridge":
+    if direction == "north":
+      return "Gate"
+  if room == "Gate":
+    if direction == "north":
+      return "Courtyard"
+    if direction == "south":
+      return "Drawbridge"
+  if room == "Courtyard":
+    if direction == "east":
+      return "Stables"
+    if direction == "west":
+      return "Kitchens"
+    if direction == "south":
+      return "Gate"
+    if direction == "north":
+      return "Hallway"
+  if room == "Kitchens":
+    if direction == "east":
+      return "Courtyard"
+  if room == "Stables":
+    if direction == "west":
+      return "Courtyard"
+  if room == "Hallway":
+    if direction == "north":
+      return "PrincessRoom"
+    if direction == "south":
+      return "Courtyard"
+    if direction == "west":
+      return "KingsRoom"
+    if direction == "east":
+      return "SirKnightsRoom"
+  if room == "PrincessRoom":
+    if direction == "south":
+      return "Hallway"
+  if room == "SirKnightsRoom":
+    if direction == "west":
+      return "Hallway"
+  if room == "KingsRoom":
+    if direction == "east":
+      return "Hallway"
+    if direction == "south":
+      return "WizardsRoom"
+  if room == "WizardsRoom":
+    if direction == "north":
+      return "KingsRoom"
+  printNow("you can't (or don't want to) go in that direction.")
+  return room
